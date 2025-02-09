@@ -2,6 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { getTransports} from './logger.config';
 import * as winston from 'winston';
 
+const { combine, timestamp, label, printf } = winston.format;
+
+const myFormat = printf(({ level, message, label, timestamp }) => {
+    return `${timestamp} ${label} [${level}]: ${message}`; // LOG FORMAT
+});
+
 @Injectable()
 export class LoggerService {
 
@@ -39,11 +45,15 @@ export class LoggerService {
 
         this.loggerDebug = winston.createLogger({
             level: 'debug',
-            format: winston.format.json(),
-            transports: getTransports('debug'),
+            format: combine(
+              winston.format.colorize(),
+              label({ label: 'dev' }),
+              timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+              myFormat
+          ),
+            transports: new winston.transports.Console(),
         });
 
-  
 
       }
 
