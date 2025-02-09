@@ -26,6 +26,12 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Dependencies
+
+https://www.npmjs.com/package/winston
+
+https://www.npmjs.com/package/winston-daily-rotate-file
+
 ## Installation
 
 ```bash
@@ -43,19 +49,6 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
